@@ -13,5 +13,3 @@ for i in range(1000):
 print(sum(multiples))
 
 # Soluition 233168
-
-# test change
