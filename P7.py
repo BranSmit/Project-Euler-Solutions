@@ -4,18 +4,25 @@
 
 # What is the 10 001st prime number?
 
-def nthPrime(n):
-    primes = []
-    i = 0
-    newi = 0
-    u = 1
-    while len(primes) > n:
-        y = i/u
-        if int(y) == y:
-            u += 1
-            
-        
-        
-        
+
+primes = [2]
+def isPrime(n):
+    for prime in primes:
+        if n % prime == 0:
+            return False
+    return True
+
+def nthPrime(n): 
+    i = 2
+    while len(primes) < n:
+        if isPrime(i) == True:
+            primes.append(i)
+            # print(len(primes))
         i += 1
+    return primes[-1]
+
+print(nthPrime(10001))
+
+# Solution: 104743
+
 
