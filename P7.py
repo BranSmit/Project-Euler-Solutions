@@ -6,7 +6,7 @@
 
 
 primes = [2]
-def isPrime(n):
+def isPrime(n):                     # This only works if the primes fed to it are in acending order, pretty much just for use in nthPrime()
     for prime in primes:
         if n % prime == 0:
             return False
