@@ -44,5 +44,3 @@ print(gen,tn)
     
 
 # Solution: 76576500
-
-
