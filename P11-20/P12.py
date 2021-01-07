@@ -37,8 +37,6 @@ while factorCount < 500:
     gen += 1
     tn += gen
     factorCount = findFactors(tn)
-    if gen % 500 == 0:
-        # print(gen)
 
 print(gen,tn)
     
