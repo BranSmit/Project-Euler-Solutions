@@ -34,25 +34,28 @@ pyramid = [[int(j) for j in i.split(' ')] for i in '''
 # However, Problem 67, is the same challenge with a triangle containing one-hundred rows; 
 # it cannot be solved by brute force, and requires a clever method! ;o)
 
-solution = 0
-def findMaxPathSumPyr(secondToBottom, pyramid, cascadeBool):
-    # You can represent each path as a binary sequence where n represents pyramid height,
-    # and 2^n = total paths. 
-    if cascadeBool == True:
-        index = 0
-        for num in pyramid[secondToBottom]:
-            if pyramid[secondToBottom+1][index] + num > pyramid[secondToBottom + 1][index + 1] + num:
-                pyramid[secondToBottom][index] = pyramid[secondToBottom +1][index] + num 
-            else:
-                pyramid[secondToBottom][index] = pyramid[secondToBottom +1][index+1] + num
-            index -= 1
-        try :
-            [secondToBottom - 1]
-            findMaxPathSumPyr(secondToBottom - 2, pyramid, True)
-        except:
-            cascadeBool = False
-            solution =  pyramid[secondToBottom]
-            print (solution)
 
+def findMaxSumPath(pyramid):
+    height = len(pyramid)
+    pyramid.reverse()
+    i = 0
+    below = []
+    for layer in pyramid:
+        if i != 0:
+            u = 0
+            newBelow = []
+            for num in layer:
+                left = below[u]
+                right = below[u + 1]
+                sumNum = (right+num, left+num)[left > right]
+                newBelow.append(sumNum)
+                u += 1
+            below = newBelow
+        else:
+            below = layer
+        i += 1 
+    return(below[0])
 
-findMaxPathSumPyr(-2, pyramid, True)
+print(findMaxSumPath(pyramid))
+
+# Solution: 1074
